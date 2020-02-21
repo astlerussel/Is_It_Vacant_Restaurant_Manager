@@ -42,7 +42,7 @@ public class HomeName extends AppCompatActivity {
     String username1;
 
     String username;
-    String dob,addr,description;
+    String dob,addr,description,category;
 
 
 
@@ -52,7 +52,7 @@ public class HomeName extends AppCompatActivity {
 
 
 
-    String gender1;
+    String type;
 
 
 
@@ -93,7 +93,28 @@ public class HomeName extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                gender1= (String) adapterView.getItemAtPosition(i);
+                type= (String) adapterView.getItemAtPosition(i);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        Spinner spinner2 = (Spinner) findViewById(R.id.gender_spinner);
+// Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
+                R.array.category, android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        spinner2.setAdapter(adapter2);
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                category= (String) adapterView.getItemAtPosition(i);
 
             }
 
@@ -164,10 +185,11 @@ public class HomeName extends AppCompatActivity {
                     userMap.put("name", username1);
 
                     userMap.put("GSTIN_NUMBER", dob);
-                    userMap.put("Type", gender1);
+                    userMap.put("Type", type);
                     userMap.put("Mobile", mob0);
                     userMap.put("Address",addr );
                     userMap.put("uid",uid2);
+                    userMap.put("category",category);
                     userMap.put("discription",description);
                     userMap.put("image","https://firebasestorage.googleapis.com/v0/b/is-it-vacant-d1cf7.appspot.com/o/profile%20images%2Fprofile_image.png?alt=media&token=07a82599-e485-4e7f-b937-dac00b1ea41d" );
 
@@ -236,9 +258,10 @@ public class HomeName extends AppCompatActivity {
                     String dob2 = documentSnapshot.getString("GSTIN_NUMBER");
                     String address = documentSnapshot.getString("Address");
                     String desc = documentSnapshot.getString("discription");
+                    String cate = documentSnapshot.getString("category");
 
 
-                    if (username != ""  && type!="" && address!=""&& dob2!="" && desc!=""){
+                    if (username != ""  && type!="" && address!=""&& dob2!="" && desc!="" && cate!=""){
                         Intent intent1 = new Intent(HomeName.this, MainActivity.class);
                         intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent1);
