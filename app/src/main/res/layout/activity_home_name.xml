@@ -26,7 +26,9 @@
         android:layout_marginRight="53dp"
         android:background="@drawable/inputss"
         android:hint="Description"
-        android:inputType="text"
+        android:inputType="textCapSentences|textMultiLine"
+        android:maxLength="2000"
+        android:maxLines="5"
         android:textAlignment="center"
         android:textColorLink="#000000" />
 
@@ -49,7 +51,9 @@
         android:layout_marginRight="53dp"
         android:background="@drawable/inputss"
         android:hint="Address"
-        android:inputType="text"
+        android:inputType="textCapSentences|textMultiLine"
+        android:maxLength="2000"
+        android:maxLines="5"
         android:textAlignment="center"
         android:textColorLink="#000000" />
 
