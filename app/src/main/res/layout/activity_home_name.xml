@@ -8,6 +8,29 @@
 
 
     <EditText
+        android:id="@+id/enter_dis_field"
+        android:layout_width="304dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/details_text"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+
+        android:layout_alignParentEnd="true"
+
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginTop="361dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginRight="53dp"
+        android:background="@drawable/inputss"
+        android:hint="Description"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textColorLink="#000000" />
+
+    <EditText
         android:id="@+id/enter_addr_field"
         android:layout_width="304dp"
         android:layout_height="wrap_content"
@@ -134,7 +157,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="110dp"
         android:layout_marginLeft="110dp"
-        android:layout_marginTop="294dp"
+        android:layout_marginTop="395dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"

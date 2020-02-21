@@ -53,8 +53,9 @@ public class MainActivity extends AppCompatActivity {
                         String type = documentSnapshot.getString("Type");
                         String gstin = documentSnapshot.getString("GSTIN_NUMBER");
                         String address = documentSnapshot.getString("Address");
+                        String desc = documentSnapshot.getString("discription");
 
-                        if (username==""|| type=="" || address==""|| gstin=="") {
+                        if (username==""|| type=="" || address==""|| gstin=="" || desc=="") {
                             Intent intent1 = new Intent(MainActivity.this, HomeName.class);
                             intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent1);
