@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HomeName extends AppCompatActivity {
-    private EditText meditText,dobText,addrText;
+    private EditText meditText,dobText,addrText,disText;
 
     private TextView mobText;
     private Button mButton;
@@ -42,7 +42,7 @@ public class HomeName extends AppCompatActivity {
     String username1;
 
     String username;
-    String dob,addr;
+    String dob,addr,description;
 
 
 
@@ -70,6 +70,7 @@ public class HomeName extends AppCompatActivity {
         mobText=findViewById(R.id.enter_mob_field);
 
         dobText=findViewById(R.id.enter_dob_field);
+        disText = findViewById(R.id.enter_dis_field);
 
 
         meditText = (EditText) findViewById(R.id.enter_name_field);
@@ -119,17 +120,19 @@ public class HomeName extends AppCompatActivity {
 
                 dob=dobText.getText().toString();
                 addr = addrText.getText().toString();
+                description = disText.getText().toString();
 
 
 
 
 
-                if(username1.isEmpty()||dob.isEmpty()||addr.isEmpty()){
+                if(username1.isEmpty()||dob.isEmpty()||addr.isEmpty()||description.isEmpty()){
 
                     meditText.setError("Mandatory Field...");
 
                     dobText.setError("Mandatory Field...");
                     addrText.setError("Mandatory Field...");
+                    disText.setError("Mandatory Field...");
 
                     meditText.requestFocus();
 
@@ -165,6 +168,7 @@ public class HomeName extends AppCompatActivity {
                     userMap.put("Mobile", mob0);
                     userMap.put("Address",addr );
                     userMap.put("uid",uid2);
+                    userMap.put("discription",description);
                     userMap.put("image","https://firebasestorage.googleapis.com/v0/b/is-it-vacant-d1cf7.appspot.com/o/profile%20images%2Fprofile_image.png?alt=media&token=07a82599-e485-4e7f-b937-dac00b1ea41d" );
 
 
@@ -231,9 +235,10 @@ public class HomeName extends AppCompatActivity {
                     String type = documentSnapshot.getString("Type");
                     String dob2 = documentSnapshot.getString("GSTIN_NUMBER");
                     String address = documentSnapshot.getString("Address");
+                    String desc = documentSnapshot.getString("discription");
 
 
-                    if (username != ""  && type!="" && address!=""&& dob2!=""){
+                    if (username != ""  && type!="" && address!=""&& dob2!="" && desc!=""){
                         Intent intent1 = new Intent(HomeName.this, MainActivity.class);
                         intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent1);
