@@ -110,7 +110,7 @@
         android:textColorLink="#000000" />
 
     <Spinner
-        android:id="@+id/gender_spinner"
+        android:id="@+id/type_spinner"
         android:layout_width="wrap_content"
 
 

@@ -82,10 +82,10 @@ public class HomeName extends AppCompatActivity {
         firebaseFirestore= FirebaseFirestore.getInstance();
         uid = mAuth.getCurrentUser().getUid();
 
-        Spinner spinner = (Spinner) findViewById(R.id.gender_spinner);
+        Spinner spinner = (Spinner) findViewById(R.id.type_spinner);
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.genders, android.R.layout.simple_spinner_item);
+                R.array.type, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
@@ -103,7 +103,7 @@ public class HomeName extends AppCompatActivity {
             }
         });
 
-        Spinner spinner2 = (Spinner) findViewById(R.id.gender_spinner);
+        Spinner spinner2 = (Spinner) findViewById(R.id.category_spinner);
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
                 R.array.category, android.R.layout.simple_spinner_item);

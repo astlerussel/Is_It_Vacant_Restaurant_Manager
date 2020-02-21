@@ -1,5 +1,5 @@
 <resources>
-    <string-array name="genders">
+    <string-array name="type">
         <item>Veg/Non-Veg</item>
         <item>Pure Veg</item>
         <item>Non-Veg</item>
