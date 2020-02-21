@@ -1,0 +1,101 @@
+{
+  "project_info": {
+    "project_number": "162229407922",
+    "firebase_url": "https://is-it-vacant-d1cf7.firebaseio.com",
+    "project_id": "is-it-vacant-d1cf7",
+    "storage_bucket": "is-it-vacant-d1cf7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162229407922:android:72dd20b4c041c9d8a7f9ab",
+        "android_client_info": {
+          "package_name": "com.example.isitvacant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "162229407922-05kq08kr741asnbmfgsavigqb043sg0o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.isitvacant",
+            "certificate_hash": "129f8438c28bc06f23bf6e973a0bcaffff4865b2"
+          }
+        },
+        {
+          "client_id": "162229407922-7dsgkcrj7ofajnbfgklo0cng3hmfn5gr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.isitvacant",
+            "certificate_hash": "fc32a35475502abfe8a9faced0526978562ddd43"
+          }
+        },
+        {
+          "client_id": "162229407922-2njd1pttspd5v2od2h87bn8m16kqhcdu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.isitvacant",
+            "certificate_hash": "7f8efca1b4746585f9b904fd99fde2ff6b195e12"
+          }
+        },
+        {
+          "client_id": "162229407922-h6ik4ebcj1nf44hutifrvgb864cgp2c6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAghp2r2ReX4z7xRm9-4BRzWmFlJYc_XY4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "162229407922-h6ik4ebcj1nf44hutifrvgb864cgp2c6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162229407922:android:b0dd18cd5e838c2ca7f9ab",
+        "android_client_info": {
+          "package_name": "com.example.isitvacantrestaurantmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "162229407922-lmrvf6egrfr3oi451hbfrncvrcd08578.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.isitvacantrestaurantmanager",
+            "certificate_hash": "7f8efca1b4746585f9b904fd99fde2ff6b195e12"
+          }
+        },
+        {
+          "client_id": "162229407922-h6ik4ebcj1nf44hutifrvgb864cgp2c6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAghp2r2ReX4z7xRm9-4BRzWmFlJYc_XY4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "162229407922-h6ik4ebcj1nf44hutifrvgb864cgp2c6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

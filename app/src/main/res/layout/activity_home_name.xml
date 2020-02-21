@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeName">
+
+
+    <TextView
+        android:id="@+id/details_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        android:text="Please Provide Your Name"
+        android:textColor="#67E6DC"
+        android:textSize="24sp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <Spinner
+        android:id="@+id/nationality_spinner2"
+
+
+        android:layout_width="wrap_content"
+
+
+        android:layout_height="42dp"
+        android:layout_alignParentStart="true"
+
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginTop="375dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginRight="53dp" />
+
+    <EditText
+        android:id="@+id/enter_name_field"
+        android:layout_width="304dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/details_text"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginRight="53dp"
+        android:background="@drawable/inputss"
+        android:hint="Name"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textColorLink="#000000" />
+
+    <Spinner
+        android:id="@+id/gender_spinner"
+        android:layout_width="wrap_content"
+
+
+        android:layout_height="40dp"
+
+
+        android:layout_below="@+id/enter_name_field"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginRight="53dp" />
+
+    <TextView
+        android:id="@+id/enter_mob_field"
+        android:layout_width="304dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/details_text"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginTop="157dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginRight="53dp"
+        android:background="@drawable/inputss"
+        android:hint="Mobile"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textColorLink="#000000"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/enter_dob_field"
+        android:layout_width="304dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/details_text"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+
+        android:layout_alignParentEnd="true"
+
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginTop="222dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginRight="53dp"
+        android:background="@drawable/inputss"
+        android:hint="Enter DOB: dd/mm/yyyy"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textColorLink="#000000" />
+
+    <Button
+        android:id="@+id/submit_details_button"
+        android:layout_width="188dp"
+        android:layout_height="73dp"
+        android:layout_below="@+id/enter_name_field"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="110dp"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="294dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+
+        android:background="@drawable/submit_bt_bg"
+        android:text="SUBMIT"
+        android:textColor="#ffffff"
+        android:textColorLink="#ffffff"
+        android:textSize="18sp" />
+
+</RelativeLayout>

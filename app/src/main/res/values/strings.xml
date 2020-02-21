@@ -1,0 +1,11 @@
+<resources>
+    <string-array name="genders">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Others</item>
+
+    </string-array>
+
+
+    <string name="app_name">Is It Vacant Restaurant Manager</string>
+</resources>
