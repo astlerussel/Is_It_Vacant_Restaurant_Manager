@@ -31,8 +31,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HomeName extends AppCompatActivity {
-    private EditText meditText,dobText;
-    Spinner spin;
+    private EditText meditText,dobText,addrText;
+
     private TextView mobText;
     private Button mButton;
     String mob0;
@@ -42,8 +42,8 @@ public class HomeName extends AppCompatActivity {
     String username1;
 
     String username;
-    String dob;
-    String nationality;
+    String dob,addr;
+
 
 
 
@@ -73,6 +73,7 @@ public class HomeName extends AppCompatActivity {
 
 
         meditText = (EditText) findViewById(R.id.enter_name_field);
+        addrText = findViewById(R.id.enter_addr_field);
 
         mButton = (Button) findViewById(R.id.submit_details_button);
 
@@ -100,43 +101,8 @@ public class HomeName extends AppCompatActivity {
 
             }
         });
-        spin=findViewById(R.id.nationality_spinner2);
-        spin.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,CountryData.countryNames));
-        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                 nationality = adapterView.getItemAtPosition(i).toString();
 
 
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-        Calendar calendar = Calendar.getInstance();
-        final int year = calendar.get(Calendar.YEAR);
-        final int month = calendar.get(Calendar.MONTH);
-        final int day = calendar.get(Calendar.DAY_OF_MONTH);
-        dobText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        HomeName.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        month = month + 1;
-                        String date = dayOfMonth + "/" + month + "/" + year;
-
-                        dobText.setText(date);
-
-                    }
-                }, year, month, day);
-                datePickerDialog.show();
-
-            }
-        });
         mobText.setText(mAuth.getCurrentUser().getPhoneNumber());
 
 
@@ -152,15 +118,18 @@ public class HomeName extends AppCompatActivity {
                 username1 = meditText.getText().toString();
 
                 dob=dobText.getText().toString();
+                addr = addrText.getText().toString();
 
 
 
 
-                if(username1.isEmpty()||dob.isEmpty()){
+
+                if(username1.isEmpty()||dob.isEmpty()||addr.isEmpty()){
 
                     meditText.setError("Mandatory Field...");
 
                     dobText.setError("Mandatory Field...");
+                    addrText.setError("Mandatory Field...");
 
                     meditText.requestFocus();
 
@@ -191,10 +160,10 @@ public class HomeName extends AppCompatActivity {
 
                     userMap.put("name", username1);
 
-                    userMap.put("Date Of Birth", dob);
-                    userMap.put("Gender", gender1);
+                    userMap.put("GSTIN_NUMBER", dob);
+                    userMap.put("Type", gender1);
                     userMap.put("Mobile", mob0);
-                    userMap.put("Nationality",nationality );
+                    userMap.put("Address",addr );
                     userMap.put("uid",uid2);
                     userMap.put("image","https://firebasestorage.googleapis.com/v0/b/is-it-vacant-d1cf7.appspot.com/o/profile%20images%2Fprofile_image.png?alt=media&token=07a82599-e485-4e7f-b937-dac00b1ea41d" );
 
@@ -202,12 +171,12 @@ public class HomeName extends AppCompatActivity {
 
 
 
-                    mFirestore.collection("users")
+                    mFirestore.collection("restaurants")
                             .document(uid2)
                             .set(userMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Toast.makeText(HomeName.this, "Data Added succesfully to Firebase", Toast.LENGTH_LONG).show();
+                            Toast.makeText(HomeName.this, "Data Added succesfully", Toast.LENGTH_LONG).show();
                         }
 
 
@@ -251,7 +220,7 @@ public class HomeName extends AppCompatActivity {
 
 
         uid = mAuth.getCurrentUser().getUid();
-        DocumentReference documentReference = firebaseFirestore.collection("users").document(uid);
+        DocumentReference documentReference = firebaseFirestore.collection("restaurants").document(uid);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
@@ -259,12 +228,12 @@ public class HomeName extends AppCompatActivity {
                 if (documentSnapshot.exists()) {
                     username = documentSnapshot.getString("name");
 
-                    String gender2 = documentSnapshot.getString("Gender");
-                    String dob2 = documentSnapshot.getString("Date Of Birth");
-                    String nationality2 = documentSnapshot.getString("Nationality");
+                    String type = documentSnapshot.getString("Type");
+                    String dob2 = documentSnapshot.getString("GSTIN_NUMBER");
+                    String address = documentSnapshot.getString("Address");
 
 
-                    if (username != ""  && gender2!="" && nationality2!=""&& dob2!=""){
+                    if (username != ""  && type!="" && address!=""&& dob2!=""){
                         Intent intent1 = new Intent(HomeName.this, MainActivity.class);
                         intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent1);

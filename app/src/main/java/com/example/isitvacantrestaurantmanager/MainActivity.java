@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         else {
             uid = mAuth.getCurrentUser().getUid();
-            DocumentReference documentReference = firebaseFirestore.collection("users").document(uid);
+            DocumentReference documentReference = firebaseFirestore.collection("restaurants").document(uid);
             documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
                 @Override
                 public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
@@ -50,11 +50,11 @@ public class MainActivity extends AppCompatActivity {
                     if (documentSnapshot.exists()) {
                         username = documentSnapshot.getString("name");
 
-                        String gender2 = documentSnapshot.getString("Gender");
-                        String dob2 = documentSnapshot.getString("Date Of Birth");
-                        String nationality2 = documentSnapshot.getString("Nationality");
+                        String type = documentSnapshot.getString("Type");
+                        String gstin = documentSnapshot.getString("GSTIN_NUMBER");
+                        String address = documentSnapshot.getString("Address");
 
-                        if (username==""|| gender2=="" || nationality2==""|| dob2=="") {
+                        if (username==""|| type=="" || address==""|| gstin=="") {
                             Intent intent1 = new Intent(MainActivity.this, HomeName.class);
                             intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent1);
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-            DocumentReference documentReference1 = firebaseFirestore.collection("users").document(uid);
+            DocumentReference documentReference1 = firebaseFirestore.collection("restaurants").document(uid);
             documentReference1.addSnapshotListener(MainActivity.this, new EventListener<DocumentSnapshot>() {
                 @Override
                 public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
