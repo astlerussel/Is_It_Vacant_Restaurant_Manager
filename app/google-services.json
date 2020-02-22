@@ -68,6 +68,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "162229407922-deqd589s65avoknr5kcvs61q0sioimoc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.isitvacantrestaurantmanager",
+            "certificate_hash": "fc32a35475502abfe8a9faced0526978562ddd43"
+          }
+        },
+        {
           "client_id": "162229407922-lmrvf6egrfr3oi451hbfrncvrcd08578.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

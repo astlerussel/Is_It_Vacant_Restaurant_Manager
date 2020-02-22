@@ -7,75 +7,9 @@
     tools:context=".HomeName">
 
 
-    <Spinner
-        android:id="@+id/category_spinner"
-        android:layout_width="wrap_content"
 
 
-        android:layout_height="40dp"
 
-
-        android:layout_below="@+id/enter_name_field"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="348dp"
-        android:layout_marginEnd="47dp"
-        android:layout_marginRight="47dp" />
-
-    <EditText
-        android:id="@+id/enter_dis_field"
-        android:layout_width="304dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/details_text"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-
-        android:layout_alignParentEnd="true"
-
-        android:layout_alignParentRight="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="54dp"
-        android:layout_marginLeft="54dp"
-        android:layout_marginTop="361dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginRight="53dp"
-        android:background="@drawable/inputss"
-        android:hint="Description"
-        android:inputType="textCapSentences|textMultiLine"
-        android:maxLength="2000"
-        android:maxLines="5"
-        android:textAlignment="center"
-        android:textColorLink="#000000" />
-
-    <EditText
-        android:id="@+id/enter_addr_field"
-        android:layout_width="304dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/details_text"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-
-        android:layout_alignParentEnd="true"
-
-        android:layout_alignParentRight="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="54dp"
-        android:layout_marginLeft="54dp"
-        android:layout_marginTop="291dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginRight="53dp"
-        android:background="@drawable/inputss"
-        android:hint="Address"
-        android:inputType="textCapSentences|textMultiLine"
-        android:maxLength="2000"
-        android:maxLines="5"
-        android:textAlignment="center"
-        android:textColorLink="#000000" />
 
     <TextView
         android:id="@+id/details_text"
@@ -86,110 +20,24 @@
         android:layout_marginTop="48dp"
         android:layout_marginEnd="8dp"
         android:text="Please Provide Your Restaurant Details"
-        android:textColor="#67E6DC"
-        android:textSize="20sp" />
+        android:textColor="#FF6D00"
+        android:textSize="22sp" />
+    <include
+        layout="@layout/sample"
+        />
 
-    <EditText
-        android:id="@+id/enter_name_field"
-        android:layout_width="304dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/details_text"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="54dp"
-        android:layout_marginLeft="54dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginRight="53dp"
-        android:background="@drawable/inputss"
-        android:hint="Name"
-        android:inputType="text"
-        android:textAlignment="center"
-        android:textColorLink="#000000" />
-
-    <Spinner
-        android:id="@+id/type_spinner"
-        android:layout_width="wrap_content"
-
-
-        android:layout_height="40dp"
-
-
-        android:layout_below="@+id/enter_name_field"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="54dp"
-        android:layout_marginLeft="54dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginRight="53dp" />
-
-    <TextView
-        android:id="@+id/enter_mob_field"
-        android:layout_width="304dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/details_text"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="54dp"
-        android:layout_marginLeft="54dp"
-        android:layout_marginTop="157dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginRight="53dp"
-        android:background="@drawable/inputss"
-        android:hint="Mobile"
-        android:inputType="text"
-        android:textAlignment="center"
-        android:textColorLink="#000000"
-        android:textSize="25dp" />
-
-    <EditText
-        android:id="@+id/enter_dob_field"
-        android:layout_width="304dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/details_text"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-
-        android:layout_alignParentEnd="true"
-
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="54dp"
-        android:layout_marginLeft="54dp"
-        android:layout_marginTop="222dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginRight="53dp"
-        android:background="@drawable/inputss"
-        android:hint="GSTIN Number"
-        android:inputType="text"
-        android:textAlignment="center"
-        android:textColorLink="#000000" />
 
     <Button
         android:id="@+id/submit_details_button"
-        android:layout_width="188dp"
-        android:layout_height="73dp"
-        android:layout_below="@+id/enter_name_field"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="110dp"
-        android:layout_marginLeft="110dp"
-        android:layout_marginTop="436dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-
-        android:background="@drawable/submit_bt_bg"
-        android:text="SUBMIT"
-        android:textColor="#ffffff"
-        android:textColorLink="#ffffff"
-        android:textSize="18sp" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/style_gradient"
+        android:text="Submit"
+        android:textColor="#fff"
+        android:elevation="20dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        />
 
 </RelativeLayout>

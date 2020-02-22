@@ -12,7 +12,7 @@
         android:layout_marginTop="48dp"
         android:layout_marginEnd="8dp"
         android:text="Verify Code"
-        android:textColor="#67E6DC"
+        android:textColor="#FF6D00"
         android:textSize="24sp" />
 
     <TextView
@@ -39,8 +39,8 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:text="Change number?"
-        android:textColor="#0A79DF"
-        android:textColorLink="#0A79DF"
+        android:textColor="#FF6D00"
+        android:textColorLink="#FF6D00"
         android:textSize="14sp" />
 
     <EditText
@@ -68,7 +68,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/create_new_bill_button_style"
+        android:background="@drawable/style_gradient"
         android:text="VERIFY"
         android:textColor="#ffffff"
         android:textColorLink="#ffffff"

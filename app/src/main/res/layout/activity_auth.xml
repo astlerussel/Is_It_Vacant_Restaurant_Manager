@@ -12,7 +12,7 @@
         android:layout_marginTop="44dp"
         android:layout_marginEnd="8dp"
         android:text="Verify your phone"
-        android:textColor="#67E6DC"
+        android:textColor="#FF6D00"
         android:textSize="24sp" />
 
     <TextView
@@ -66,7 +66,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/create_new_bill_button_style"
+        android:background="@drawable/style_gradient"
         android:text="NEXT"
         android:textColor="#ffffff"
         android:textSize="18sp" />
