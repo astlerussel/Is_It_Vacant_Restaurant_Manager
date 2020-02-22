@@ -2,6 +2,7 @@ package com.example.isitvacantrestaurantmanager;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,14 +18,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -36,13 +45,16 @@ public class HomeName extends AppCompatActivity {
     private TextView mobText;
     private Button mButton;
     String mob0;
-
+    Button Addphoto;
     String uid;
     FirebaseAuth mAuth;
     String username1;
-
+    Uri Image;
+    private static final int GalleryPick = 1;
     String username;
     String dob,addr,description,category;
+    private StorageReference userProfileImageRef;
+    FirebaseFirestore mstore;
 
 
 
@@ -77,10 +89,22 @@ public class HomeName extends AppCompatActivity {
         addrText = findViewById(R.id.enter_addr_field);
 
         mButton = (Button) findViewById(R.id.submit_details_button);
-
+        mstore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         firebaseFirestore= FirebaseFirestore.getInstance();
         uid = mAuth.getCurrentUser().getUid();
+        Addphoto = findViewById(R.id.add_res_photo);
+
+        //restaurant photo
+        Addphoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent galleryIntent = new Intent();
+                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+                galleryIntent.setType("image/*");
+                startActivityForResult(galleryIntent, GalleryPick);
+            }
+        });
 
         Spinner spinner = (Spinner) findViewById(R.id.type_spinner);
 // Create an ArrayAdapter using the string array and a default spinner layout
@@ -138,7 +162,6 @@ public class HomeName extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 username1 = meditText.getText().toString();
-
                 dob=dobText.getText().toString();
                 addr = addrText.getText().toString();
                 description = disText.getText().toString();
@@ -271,6 +294,102 @@ public class HomeName extends AppCompatActivity {
 
             }
         });
+    }
+//edited res photos
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        final String uid2 = mAuth.getCurrentUser().getUid();
+
+        if (requestCode == GalleryPick && resultCode == RESULT_OK && data != null) {
+
+
+            Uri ImageUri = data.getData();
+            CropImage.activity()
+                    .setGuidelines(CropImageView.Guidelines.ON)
+                    .setAspectRatio(1, 1)
+                    .start(HomeName.this);
+
+        } /*else {
+            progressBar.setVisibility(View.INVISIBLE);
+
+
+        }*/
+
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+          //  progressBar.setVisibility(View.VISIBLE);
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+
+
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+
+
+                UploadTask uploadTask;
+                userProfileImageRef = FirebaseStorage.getInstance().getReference().child("Restaurant photos");
+
+
+                final StorageReference ref = userProfileImageRef.child(uid + ".jpg");
+                uploadTask = ref.putFile(resultUri);
+
+
+                Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                    @Override
+                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                        if (!task.isSuccessful()) {
+                            throw task.getException();
+                        }
+
+                        // Continue with the task to get the download URL
+                        return ref.getDownloadUrl();
+                    }
+                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        if (task.isSuccessful()) {
+                            //progressBar.setVisibility(View.INVISIBLE);
+
+
+                            Toast.makeText(getApplicationContext(), "Restaurant photo Uploaded Successfully", Toast.LENGTH_LONG).show();
+                            final Uri downloadUri = task.getResult();
+
+                            Map<String, Object> userMap = new HashMap<>();
+
+                            userMap.put("image", downloadUri.toString());
+
+
+                            mstore.collection("restaurants")
+                                    .document(uid)
+                                    .update(userMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+
+                                }
+
+
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    String error = e.getMessage();
+                                    Toast.makeText(getApplicationContext(), "Error" + error, Toast.LENGTH_LONG).show();
+                                }
+                            });
+
+
+                        } else {
+                           // progressBar.setVisibility(View.INVISIBLE);
+                            String error = task.getException().toString();
+                            Toast.makeText(getApplicationContext(), "Error" + error, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+            }
+
+        } /*else {
+            progressBar.setVisibility(View.INVISIBLE);
+
+        }*/
     }
 
 }

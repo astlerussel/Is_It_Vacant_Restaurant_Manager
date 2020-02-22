@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="95dp"
+    >
+
+    <Button
+        android:id="@+id/add_res_photo"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="Add Restaurant Photo"
+        android:textSize="13dp"
+        android:elevation="20dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/style_gradient"
+        android:textColor="#fff"
+        android:drawableStart="@drawable/ic_add_black_24dp"
+        />
+    <EditText
+        android:id="@+id/enter_name_field"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:padding="5dp"
+        android:elevation="10dp"
+        android:layout_below="@+id/add_res_photo"
+        android:hint="Enter the Name of the Restaurant"
+        android:background="@drawable/rounded_edit_text"/>
+    <RelativeLayout
+        android:id="@+id/spinner1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/enter_name_field"
+        android:layout_marginRight="10dp">
+    <Spinner
+        android:id="@+id/type_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/spinner_edit"
+        android:spinnerMode="dropdown"
+        android:elevation="10dp"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="350dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_arrow_drop_down_black_24dp" />
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/enter_mob_field"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:padding="5dp"
+        android:gravity="center|start"
+        android:layout_below="@+id/spinner1"
+        android:hint="Enter Your Mobile Number"
+        android:textSize="18dp"
+        android:elevation="10dp"
+        android:background="@drawable/rounded_edit_text"
+        />
+    <EditText
+        android:id="@+id/enter_dob_field"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:padding="5dp"
+        android:layout_below="@+id/enter_mob_field"
+        android:hint="GSTIN Number"
+        android:elevation="10dp"
+        android:background="@drawable/rounded_edit_text"
+        />
+    <EditText
+        android:id="@+id/enter_addr_field"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:padding="5dp"
+        android:layout_below="@+id/enter_dob_field"
+        android:hint="Enter the Address"
+        android:elevation="10dp"
+        android:background="@drawable/rounded_edit_text"
+        />
+    <EditText
+        android:id="@+id/enter_dis_field"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:padding="5dp"
+        android:layout_below="@+id/enter_addr_field"
+        android:hint="Discription"
+        android:elevation="10dp"
+        android:background="@drawable/rounded_edit_text"
+        />
+    <RelativeLayout
+        android:id="@+id/spinner2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/enter_dis_field">
+    <Spinner
+        android:id="@+id/category_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/spinner_edit"
+        android:spinnerMode="dropdown"
+        android:elevation="10dp"
+        />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="350dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_arrow_drop_down_black_24dp" />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
