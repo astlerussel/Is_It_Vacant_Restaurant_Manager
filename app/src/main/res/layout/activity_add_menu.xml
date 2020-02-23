@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddMenu">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/Add_Top_Dishes_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:cardCornerRadius="10dp"
+        android:elevation="20dp">
+    <Button
+        android:id="@+id/Add_Top_Dishes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Add Top Dishes"
+        android:gravity="left|center"
+        android:padding="10dp"
+        android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
+        android:background="@drawable/style_gradient"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/Add_Food_items_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Add_Top_Dishes_card"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:cardCornerRadius="10dp"
+        android:elevation="20dp">
+        <Button
+            android:id="@+id/Add_Food_items"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Add Food Items"
+            android:gravity="left|center"
+            android:padding="10dp"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
+            android:background="@drawable/style_gradient"/>
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
