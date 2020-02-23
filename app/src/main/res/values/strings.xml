@@ -11,6 +11,11 @@
         <item>party</item>
 
     </string-array>
+    <string-array name="dish_type">
+        <item>BreakFast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+    </string-array>
 
 
     <string name="app_name">Is It Vacant Restaurant Manager</string>
