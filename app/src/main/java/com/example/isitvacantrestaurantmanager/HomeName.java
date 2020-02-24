@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -181,8 +182,19 @@ public class HomeName extends AppCompatActivity {
                     meditText.requestFocus();
 
                 }
+                else if(dobText.getText().toString().length()>10){
+
+
+                    int maxLength = 10;
+                    dobText.setError("GSTIN Number Should be only 10 Digits....!!");
+                    Toast.makeText(HomeName.this, "Please Enter a Proper GSTIN Number!!!!" , Toast.LENGTH_LONG).show();
+                    dobText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+                    dobText.requestFocus();
+
+                }
                 else {
                     mob0=mobText.getText().toString();
+
 
 
 
