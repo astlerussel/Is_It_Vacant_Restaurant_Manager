@@ -213,6 +213,7 @@ public class HomeName extends AppCompatActivity {
                     userMap.put("Address",addr );
                     userMap.put("uid",uid2);
                     userMap.put("category",category);
+                    userMap.put("total_rating","0.0");
                     userMap.put("discription",description);
                     userMap.put("image","https://firebasestorage.googleapis.com/v0/b/is-it-vacant-d1cf7.appspot.com/o/profile%20images%2Fprofile_image.png?alt=media&token=07a82599-e485-4e7f-b937-dac00b1ea41d" );
 
