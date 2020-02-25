@@ -76,6 +76,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="15dp"
         android:padding="5dp"
+        android:inputType="number"
         android:layout_below="@+id/enter_mob_field"
         android:hint="GSTIN Number"
         android:elevation="10dp"
