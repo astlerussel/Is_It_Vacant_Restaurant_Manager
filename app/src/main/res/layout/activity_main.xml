@@ -7,53 +7,28 @@
     tools:context=".MainActivity">
 
 
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/AddMenu"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="40dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="20dp"
-        app:cardBackgroundColor="#fff"
-        android:layout_marginRight="30dp"
-        android:layout_height="173dp"
+        android:layout_height="match_parent"
+        android:id="@+id/container"
         >
-        <TextView
+        <!-- Main content -->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/style_gradient"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="#fff"
+            app:itemRippleColor="#000"
+            app:itemIconTint="@drawable/color_bottom_nav"
+            app:itemTextColor="#111"
+            app:menu="@menu/bottom_navigation_menu"
             />
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="start|center"
-            android:scaleType="fitXY"
-            android:src="@drawable/menu"
+    </FrameLayout>
 
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="Add Menu"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:textSize="30dp"
-            android:elevation="100000dp"
 
-            />
 
-    </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/logout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        android:background="@drawable/style_gradient"
-        android:layout_alignParentBottom="true"
-         />
 
 </RelativeLayout>
+
+
