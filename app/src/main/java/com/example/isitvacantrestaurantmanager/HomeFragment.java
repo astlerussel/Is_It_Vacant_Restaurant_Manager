@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
@@ -24,13 +25,17 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 
 /**
@@ -61,7 +66,7 @@ public class HomeFragment extends Fragment {
 
     private String uid,username;
     String currentUserName,currentUserImage,currentUserMobile;
-
+    private FirebaseFirestore mFirestore;
 
 
     public HomeFragment() {
@@ -99,6 +104,9 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
         mAuth = FirebaseAuth.getInstance();
+
+        mFirestore = FirebaseFirestore.getInstance();
+        uid = mAuth.getCurrentUser().getUid();
 
 
 
@@ -178,8 +186,47 @@ public class HomeFragment extends Fragment {
                 Submit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(getContext(), "submitted", Toast.LENGTH_SHORT).show();
-                        dialog.dismiss();
+                        final String dates = Date.getText().toString();
+                        final String timeslot = Time.getText().toString();
+                        if (dates.isEmpty() && timeslot.isEmpty()){
+                            Date.setError("Please select a date!!!");
+                            Time.setError("Please select a time slot!!!");
+                            Toast.makeText(getContext(), "please select date and time!!!", Toast.LENGTH_LONG).show();
+                        }
+                        else{
+                            Map<String, String> TimeSlotMap = new HashMap<>();
+
+                            TimeSlotMap.put("date", dates);
+
+                            TimeSlotMap.put("time_slot", timeslot);
+
+
+
+
+
+
+
+
+                            mFirestore.collection("restaurants")
+                                    .document(uid).collection("time_slots").document()
+                                    .set(TimeSlotMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getContext(), "Time slot :"+timeslot+"is created for the date:"+dates, Toast.LENGTH_LONG).show();
+                                }
+
+
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    String error = e.getMessage();
+                                    Toast.makeText(getContext(), "Error" + error, Toast.LENGTH_LONG).show();
+                                }
+                            });
+                            dialog.dismiss();
+
+                        }
+
                     }
                 });
                 dialog.show();

@@ -3,11 +3,15 @@ package com.example.isitvacantrestaurantmanager;
 
 import android.os.Bundle;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.material.tabs.TabLayout;
 
 
 /**
@@ -28,6 +32,12 @@ public class ReservationFragment extends Fragment {
     private String mParam4;
 
     View view;
+
+
+    private ViewPager mViewPager;
+    private TabLayout mTabLayout;
+    private Toolbar mToolbar;
+    private TabsAccessorAdapter mytabsAccessorAdapter;
 
 
     public ReservationFragment() {
@@ -64,6 +74,13 @@ public class ReservationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_reservation, container, false);
+
+
+        mViewPager = view.findViewById(R.id.main_tabs_pager);
+        mytabsAccessorAdapter = new TabsAccessorAdapter(getChildFragmentManager());
+        mViewPager.setAdapter(mytabsAccessorAdapter);
+        mTabLayout = view.findViewById(R.id.main_tab);
+        mTabLayout.setupWithViewPager(mViewPager);
 
 
 
