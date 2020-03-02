@@ -67,6 +67,7 @@ public class HomeFragment extends Fragment {
     private String uid,username;
     String currentUserName,currentUserImage,currentUserMobile;
     private FirebaseFirestore mFirestore;
+    String time;
 
 
     public HomeFragment() {
@@ -175,7 +176,15 @@ public class HomeFragment extends Fragment {
                                 } else {
                                     amPm = "AM";
                                 }
-                                String time = hourOfDay+ ":" + minute+" "+amPm;
+                                if(minute>=0 && minute<=9)
+                                    {
+                                    time = hourOfDay+ ": 0" +minute+" "+amPm;
+                                }
+                                else
+                                {
+                                    time = hourOfDay+ ":" +minute+" "+amPm;
+                                }
+
                                 Time.setText(time);
                             }
                         },00,00,false);
