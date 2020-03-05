@@ -25,7 +25,7 @@ public class AuthActivity extends AppCompatActivity {
 
         editText = findViewById(R.id.enter_phone_no_field);
 
-        findViewById(R.id.nxt_btn_to_verif_phone).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.submit_food_bt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String code = CountryData.countryAreaCodes[spinner.getSelectedItemPosition()];

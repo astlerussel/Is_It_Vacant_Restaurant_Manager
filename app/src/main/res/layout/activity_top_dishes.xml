@@ -32,7 +32,7 @@
         android:drawableStart="@drawable/ic_add_black_24dp"
         />
     <EditText
-        android:id="@+id/enter_name_field"
+        android:id="@+id/food_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
@@ -49,7 +49,7 @@
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
-        android:layout_below="@+id/enter_name_field"
+        android:layout_below="@+id/food_title"
         android:layout_marginRight="10dp">
         <Spinner
             android:id="@+id/type_spinner"
@@ -85,7 +85,7 @@
         android:background="@drawable/rounded_edit_text"
         />
     <Button
-    android:id="@+id/nxt_btn_to_verif_phone"
+    android:id="@+id/submit_food_bt"
     android:layout_width="183dp"
     android:layout_height="42dp"
     android:layout_below="@+id/enter_cost_field"
