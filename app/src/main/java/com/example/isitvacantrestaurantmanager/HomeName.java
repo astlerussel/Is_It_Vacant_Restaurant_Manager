@@ -1,6 +1,5 @@
 package com.example.isitvacantrestaurantmanager;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,7 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -36,7 +34,6 @@ import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -86,7 +83,7 @@ public class HomeName extends AppCompatActivity {
         disText = findViewById(R.id.enter_dis_field);
 
 
-        meditText = (EditText) findViewById(R.id.enter_name_field);
+        meditText = (EditText) findViewById(R.id.food_title);
         addrText = findViewById(R.id.enter_addr_field);
 
         mButton = (Button) findViewById(R.id.submit_details_button);

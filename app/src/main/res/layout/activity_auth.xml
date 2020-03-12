@@ -57,7 +57,7 @@
         />
 
     <Button
-        android:id="@+id/nxt_btn_to_verif_phone"
+        android:id="@+id/submit_food_bt"
         android:layout_width="183dp"
         android:layout_height="42dp"
         android:layout_below="@+id/enter_phone_no_field"
