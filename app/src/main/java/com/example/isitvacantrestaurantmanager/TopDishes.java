@@ -22,7 +22,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -62,6 +66,7 @@ public class TopDishes extends AppCompatActivity {
         foodTitle = findViewById(R.id.food_title);
 
         //restaurant photo
+
         Addphoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,6 +109,8 @@ public class TopDishes extends AppCompatActivity {
 
 
 
+
+
                 if(foodName.isEmpty()||foodCost.isEmpty()){
 
                     foodTitle.setError("Mandatory Field...");
@@ -121,51 +128,78 @@ public class TopDishes extends AppCompatActivity {
 
                     String uid2 = mAuth.getCurrentUser().getUid();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    Map<String, String> userMap = new HashMap<>();
-
-                    userMap.put("name", foodName);
-
-
-                    userMap.put("type", type);
-                    userMap.put("cost", foodCost);
-
-                    userMap.put("image","https://firebasestorage.googleapis.com/v0/b/is-it-vacant-d1cf7.appspot.com/o/profile%20images%2Fprofile_image.png?alt=media&token=07a82599-e485-4e7f-b937-dac00b1ea41d" );
-
-
-
-
-
-                    firebaseFirestore.collection("restaurants")
-                            .document(uid2).collection("menu").document()
-                            .set(userMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    DocumentReference documentReference = firebaseFirestore.collection("restaurants")
+                            .document(uid).collection("menu").document(foodName);
+                    documentReference.addSnapshotListener(TopDishes.this, new EventListener<DocumentSnapshot>() {
                         @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(TopDishes.this, "Menu Added succesfully", Toast.LENGTH_LONG).show();
-                        }
+                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+
+                            if (documentSnapshot.exists()) {
 
 
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            String error = e.getMessage();
-                            Toast.makeText(TopDishes.this, "Error" + error, Toast.LENGTH_LONG).show();
+
+                                Map<String, Object> userMap = new HashMap<>();
+
+                                userMap.put("name", foodName);
+
+
+                                userMap.put("type", type);
+                                userMap.put("cost", foodCost);
+
+                                //userMap.put("image","https://firebasestorage.googleapis.com/v0/b/is-it-vacant-d1cf7.appspot.com/o/profile%20images%2Fprofile_image.png?alt=media&token=07a82599-e485-4e7f-b937-dac00b1ea41d" );
+
+
+
+
+
+                                firebaseFirestore.collection("restaurants")
+                                        .document(uid).collection("menu").document(foodName)
+                                        .update(userMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Toast.makeText(TopDishes.this, "Menu Added succesfully", Toast.LENGTH_LONG).show();
+                                    }
+
+
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        String error = e.getMessage();
+                                        Toast.makeText(TopDishes.this, "Error" + error, Toast.LENGTH_LONG).show();
+                                    }
+                                });
+
+
+
+
+
+                            }
+                            else
+                            {
+
+                                Toast.makeText(TopDishes.this, "Error:Please Upload an Image First", Toast.LENGTH_LONG).show();
+
+                            }
+
                         }
                     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 }
@@ -231,13 +265,18 @@ public class TopDishes extends AppCompatActivity {
                             final Uri downloadUri = task.getResult();
 
                             Map<String, Object> userMap = new HashMap<>();
+                            userMap.put("name","");
+
+
+                            userMap.put("type","");
+                            userMap.put("cost", "");
 
                             userMap.put("image", downloadUri.toString());
 
 
                             firebaseFirestore.collection("restaurants")
-                                    .document(uid).collection("menu").document()
-                                    .update(userMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    .document(uid).collection("menu").document(foodName)
+                                    .set(userMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
 
