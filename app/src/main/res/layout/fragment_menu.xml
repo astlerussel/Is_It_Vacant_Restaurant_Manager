@@ -41,7 +41,43 @@
             android:textStyle="bold"
             android:textSize="30dp"
             android:elevation="100000dp"
+            />
 
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/Menu_details"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="250dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="20dp"
+        app:cardBackgroundColor="#fff"
+        android:layout_marginRight="30dp"
+        android:layout_height="173dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/style_gradient"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|center"
+            android:scaleType="fitXY"
+            android:src="@drawable/pizz"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Menu Details"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:elevation="100000dp"
             />
 
     </androidx.cardview.widget.CardView>

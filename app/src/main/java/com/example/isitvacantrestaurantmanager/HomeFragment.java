@@ -22,6 +22,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -46,9 +48,11 @@ public class HomeFragment extends Fragment {
 
     EditText Date,Time;
     FirebaseAuth mAuth;
-    Button Logout,Button,Submit;
+    Button Button,Submit,Availabillity,Submit_availabilty,Gallery;
     CardView AddMenu;
-    Dialog dialog;
+    Dialog dialog,dialog1;
+    RadioButton openAndClose;
+    RadioGroup radio_group;
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -112,15 +116,40 @@ public class HomeFragment extends Fragment {
 
 
         Button = view.findViewById(R.id.Add_time_slots);
-        Logout = view.findViewById(R.id.logout);
-        Logout.setOnClickListener(new View.OnClickListener() {
+        Availabillity = view.findViewById(R.id.Availbility);
+        Gallery = view.findViewById(R.id.gallery);
+        Gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAuth.signOut();
-                Intent intent = new Intent(getContext(), AuthActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                Toast.makeText(getContext(), "Logged out succesfully", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(),Gg.class));
+            }
+        });
+
+        Availabillity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog1 = new Dialog(getContext());
+                dialog1.setContentView(R.layout.availabilty);
+                dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                Window window = dialog1.getWindow();
+                WindowManager.LayoutParams wlp = window.getAttributes();
+                wlp.gravity = Gravity.CENTER;
+                Submit_availabilty = dialog1.findViewById(R.id.submit_Availabilty);
+                Submit_availabilty.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        radio_group =  dialog1.findViewById(R.id.radio_group);
+                        int selectedId = radio_group.getCheckedRadioButtonId();
+
+                        // find the radiobutton by returned id
+                        openAndClose = dialog1.findViewById(selectedId);
+                        Toast.makeText(getContext(), openAndClose.getText(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dialog1.show();
+                dialog1.setCanceledOnTouchOutside(true);
+
             }
         });
         Button.setOnClickListener(new View.OnClickListener() {
@@ -238,16 +267,11 @@ public class HomeFragment extends Fragment {
 
                     }
                 });
+
                 dialog.show();
                 dialog.setCanceledOnTouchOutside(true);
             }
         });
         return view;
     }
-
-
-
-
-
-
 }
