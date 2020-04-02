@@ -274,6 +274,7 @@ public class TopDishes extends AppCompatActivity {
                             userMap.put("image", downloadUri.toString());
 
 
+                            foodName = foodTitle.getText().toString();
                             firebaseFirestore.collection("restaurants")
                                     .document(uid).collection("menu").document(foodName)
                                     .set(userMap).addOnSuccessListener(new OnSuccessListener<Void>() {
