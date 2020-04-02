@@ -4,21 +4,30 @@ package com.example.isitvacantrestaurantmanager;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ProfileFragment extends Fragment {
+
+TextView restoName,restoLoc,restoNum,restoType,restoGSTIN,restoCat,restoDes;
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -72,6 +81,15 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_profile, container, false);
+        restoCat = view.findViewById(R.id.Res_Category);
+        restoDes = view.findViewById(R.id.res_des);
+        restoGSTIN = view.findViewById(R.id.res_gstin);
+        restoLoc = view.findViewById(R.id.Res_address);
+        restoName = view.findViewById(R.id.food_title);
+        restoNum = view.findViewById(R.id.Mobile_Number);
+        restoType = view.findViewById(R.id.Res_type);
+
+
         Edit = view.findViewById(R.id.Edit_profile);
         Logout = view.findViewById(R.id.logout);
         Logout.setOnClickListener(new View.OnClickListener() {
@@ -97,4 +115,38 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        String uid = FirebaseAuth.getInstance().getUid();
+
+        DocumentReference documentReferences2 = FirebaseFirestore.getInstance().collection("restaurants").document(uid);
+        documentReferences2.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+
+                if (documentSnapshot.exists()){
+
+
+                    restoName.setText(documentSnapshot.getString("name"));
+                    restoCat.setText(documentSnapshot.getString("category"));
+                    restoDes.setText(documentSnapshot.getString("discription"));
+                    restoGSTIN.setText(documentSnapshot.getString("GSTIN_NUMBER"));
+                    restoLoc.setText(documentSnapshot.getString("Address"));
+                    restoNum.setText(documentSnapshot.getString("Mobile"));
+                    restoType.setText(documentSnapshot.getString("Type"));
+
+                }
+
+
+
+
+
+
+
+
+            }
+        });
+    }
 }

@@ -5,6 +5,52 @@
     android:layout_height="match_parent"
     tools:context=".ProfileFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/res_des"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#60000000" />
+
+    <LinearLayout
+        android:layout_below="@+id/res_gstin"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="1dp"
+        android:background="#60000000" />
+
+    <TextView
+        android:id="@+id/res_des"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/res_gstin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:elevation="10dp"
+        android:gravity="left|center"
+        android:hint="Restaurant Description"
+        android:padding="5dp"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/res_gstin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/Res_Category"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:elevation="10dp"
+        android:gravity="left|center"
+        android:hint="Restaurant GSTIN"
+        android:padding="5dp"
+        android:textSize="18dp" />
+
     <TextView
         android:id="@+id/profile"
         android:layout_width="wrap_content"
@@ -129,19 +175,22 @@
         android:layout_height="1dp"
         android:background="#60000000"
         />
+
     <Button
         android:id="@+id/Edit_profile"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/Res_Category"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="151dp"
+        android:background="#FF7043"
+        android:gravity="center"
         android:text="Edit"
-        android:textStyle="bold"
         android:textColor="#fff"
         android:textSize="18dp"
-        android:gravity="center"
-        android:layout_below="@id/Res_Category"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="120dp"
-        android:background="#FF7043"/>
+        android:textStyle="bold" />
+
     <Button
         android:id="@+id/logout"
         android:layout_width="match_parent"
