@@ -1,6 +1,7 @@
 package com.example.isitvacantrestaurantmanager;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,6 +9,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 
 /**
@@ -28,6 +33,8 @@ public class ProfileFragment extends Fragment {
     private String mParam4;
 
     View view;
+    Button Edit,Logout;
+    FirebaseAuth mAuth;
 
 
     public ProfileFragment() {
@@ -56,6 +63,7 @@ public class ProfileFragment extends Fragment {
             mParam3 = getArguments().getString(ARG_PARAM3);
             mParam4 = getArguments().getString(ARG_PARAM4);
         }
+        mAuth = FirebaseAuth.getInstance();
     }
 
 
@@ -64,7 +72,24 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_profile, container, false);
-
+        Edit = view.findViewById(R.id.Edit_profile);
+        Logout = view.findViewById(R.id.logout);
+        Logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                Intent intent = new Intent(getContext(), AuthActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                Toast.makeText(getContext(), "Logged out succesfully", Toast.LENGTH_SHORT).show();
+            }
+        });
+        Edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),HomeName.class));
+            }
+        });
 
 
 

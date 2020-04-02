@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/food_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Name of the dish"
+    android:textSize="16dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="25dp"
+    />
+    <TextView
+        android:id="@+id/food_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Type of food"
+        android:textSize="16dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="3dp"
+        />
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="₹"
+        android:textSize="16dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="3dp"
+        />
+    <TextView
+        android:id="@+id/food_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="50"
+        android:textSize="16dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="-22dp"
+        />
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/fav"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="-90dp"
+        />
+
+    <TextView
+        android:id="@+id/Edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:fontFamily="monospace"
+        android:text="Edit"
+        android:layout_marginTop="5dp"
+        android:textColor="#0091EA"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/Remove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="-25dp"
+        android:fontFamily="monospace"
+        android:text="Remove"
+        android:textColor="#D50000"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="1dp"
+        android:background="#60000000"
+        />
+</LinearLayout>

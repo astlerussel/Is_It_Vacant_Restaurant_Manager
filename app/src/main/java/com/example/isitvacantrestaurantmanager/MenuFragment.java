@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
  * A simple {@link Fragment} subclass.
  */
 public class MenuFragment extends Fragment {
-    CardView AddMenu;
+    CardView AddMenu,MenuDetail;
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -78,10 +78,17 @@ public class MenuFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_menu, container, false);
          AddMenu = view.findViewById(R.id.AddMenu);
+         MenuDetail = view.findViewById(R.id.Menu_details);
          AddMenu.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
                  startActivity(new Intent(getContext(),TopDishes.class));
+             }
+         });
+         MenuDetail.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 startActivity(new Intent(getContext(),Menu_details.class));
              }
          });
 

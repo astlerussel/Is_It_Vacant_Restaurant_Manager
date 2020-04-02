@@ -2,10 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="match_parent"
     android:layout_width="match_parent">
 
+
     <Button
         android:id="@+id/Add_time_slots"
         android:layout_width="310dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:gravity="center"
         android:layout_marginTop="100dp"
         android:background="@drawable/style_button_gradient"
@@ -17,15 +18,44 @@
 
 
     <Button
-        android:id="@+id/logout"
-        android:layout_width="match_parent"
+        android:id="@+id/Availbility"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="63dp"
-        android:background="@drawable/style_gradient"
-        android:text="Logout"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="-15dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/style_button_gradient"
+        android:elevation="20dp"
+        android:gravity="center"
+        android:text="Availabilty"
         android:textColor="#fff"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
+    <Button
+        android:id="@+id/gallery"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="300dp"
+        android:background="@drawable/style_button_gradient"
+        android:text="Gallery View"
+        android:layout_marginLeft="-15dp"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:elevation="20dp"/>
+    <Button
+        android:id="@+id/layout"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="-15dp"
+        android:layout_marginTop="400dp"
+        android:background="@drawable/style_button_gradient"
+        android:elevation="20dp"
+        android:gravity="center"
+        android:text="Layout"
+        android:textColor="#fff"
+        android:textStyle="bold" />
+
+
 
 </RelativeLayout>
