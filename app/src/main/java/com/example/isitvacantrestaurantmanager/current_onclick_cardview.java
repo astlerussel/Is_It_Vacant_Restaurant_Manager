@@ -82,6 +82,7 @@ public class current_onclick_cardview extends AppCompatActivity {
         menuRecyclerList.setLayoutManager(new LinearLayoutManager(this));
         String invoiceId = getIntent().getStringExtra("uid");
         char flag = invoiceId.charAt(invoiceId.length()-1);
+
         if(flag=='N'){
 
             RelativeLayout layout = findViewById(R.id.menu_info_t);
@@ -92,16 +93,16 @@ public class current_onclick_cardview extends AppCompatActivity {
         else{
             RelativeLayout layout = findViewById(R.id.menu_info_t);
 
-            layout.setVisibility(View.INVISIBLE);
+            layout.setVisibility(View.VISIBLE);
         }
         String reserve = getIntent().getStringExtra("reserve");
 
-        menuRef = db.collection("/users/" + uid + "/" + reserve + "/" + invoiceId + "/cart");
+        menuRef = db.collection("/restaurants/" + uid + "/" + reserve + "/" + invoiceId + "/cart");
         query = menuRef.orderBy("foodName");
         setUpRecyclerView(query);
         grandTotal = findViewById(R.id.total_no_of_items);
 
-        mstore.collection("/users/" + uid + "/" + reserve + "/" + invoiceId + "/cart")
+        mstore.collection("/restaurants/" + uid + "/" + reserve + "/" + invoiceId + "/cart")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value,
@@ -176,28 +177,9 @@ public class current_onclick_cardview extends AppCompatActivity {
 
         uid  = mAuth.getCurrentUser().getUid();
         mstore = FirebaseFirestore.getInstance();
-        DocumentReference documentReferences3 = mstore.collection("users").document(uid);
-        documentReferences3.addSnapshotListener(current_onclick_cardview.this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-
-                if (documentSnapshot.exists()){
-
-                    mobile_no.setText(documentSnapshot.getString("Mobile"));
-
-                }
 
 
-
-
-
-
-
-
-            }
-        });
-
-        DocumentReference documentReferences2 = mstore.collection("users").document(uid).collection(reserve).document(invoiceId);
+        DocumentReference documentReferences2 = mstore.collection("restaurants").document(uid).collection(reserve).document(invoiceId);
         documentReferences2.addSnapshotListener(current_onclick_cardview.this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
@@ -212,6 +194,7 @@ public class current_onclick_cardview extends AppCompatActivity {
                     numberOfGuests.setText(documentSnapshot.getString("guests"));
                     Location.setText(documentSnapshot.getString("location"));
                     Username.setText(documentSnapshot.getString("userName"));
+                    mobile_no.setText(documentSnapshot.getString("Mobile"));
                 }
 
 
