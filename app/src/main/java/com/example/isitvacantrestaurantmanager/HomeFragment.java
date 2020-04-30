@@ -280,19 +280,5 @@ public class HomeFragment extends Fragment {
         });
         return view;
     }
-    @Override
-    public void onStart() {
-        super.onStart();
-        mAuth = FirebaseAuth.getInstance();
-        firebaseFirestore= FirebaseFirestore.getInstance();
 
-        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
-            Intent intent = new Intent(getContext(), AuthActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
-            startActivity(intent);
-        }
-
-
-    }
 }
